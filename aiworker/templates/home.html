@@ -1,14 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
 <div class="flex-col items-center justify-center">
   <div class="flex flex-row justify-between mb-4">
     <div class="flex-col">
+      <a class="text-blue-500 underline text-xs" href="{% static 'aiworker/walmart_products.csv' %}" download>Download Demo</a>
       <label for="products-data" class="block mb-2">Products Data</label>
       <input type="file" id="products-data" accept=".csv" />
     </div>
     <div class="flex-col">
+      <a class="text-blue-500 underline text-xs" href="{% static 'aiworker/walmart_purchases.csv' %}" download>Download Demo</a>
       <label for="purchase-data" class="block mb-2">Purchase Data</label>
       <input type="file" id="purchase-data" accept=".csv" />
     </div>
