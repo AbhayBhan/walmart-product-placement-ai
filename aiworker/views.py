@@ -37,9 +37,12 @@ def upload_csv_files(request):
 
       init_placement_ai(products_df=products_df, purchases_df=purchase_df)
 
+      response = solve_user_query("Give some suggestions based on the data, Just use the data to give me top usable pairings and insights.")
+
       return JsonResponse({
           'message': 'Files uploaded and processed successfully',
-          'accessAI': True
+          'accessAI': True,
+          'response': response
       }, status=200)
 
     except Exception as e:
