@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .util.apriori_analyzer import init_placement_ai
-from .util.llm_runner import solve_user_query
+from .util.llm_runner import solve_user_query, give_imp_pairs
 
 def home(request): 
   return render(request, "home.html")
@@ -39,10 +39,13 @@ def upload_csv_files(request):
 
       response = solve_user_query("Give some suggestions based on the data, Just use the data to give me top usable pairings and insights.")
 
+      pairings = give_imp_pairs()
+
       return JsonResponse({
           'message': 'Files uploaded and processed successfully',
           'accessAI': True,
-          'response': response
+          'response': response,
+          'impPairings': pairings
       }, status=200)
 
     except Exception as e:

@@ -21,6 +21,10 @@
     <button id="upload-button" class="px-4 py-2 bg-blue-500 rounded-xl text-white">Upload Data</button>
   </div>
 
+  <div id="imp-pairings-placeholder" class="flex flex-col justify-start w-1/2">
+    
+  </div>
+
   <!-- AI Panel Placeholder -->
   <div id="ai-panel-placeholder"></div>
 </div>
@@ -53,7 +57,7 @@
     })
     .then(response => {
       if (response.data.accessAI) {
-        renderAIPanel(response.data.response);
+        renderAIPanel(response.data.response, response.data.impPairings);
       }
       Toastify({
         text: response.data.message,
@@ -75,7 +79,7 @@
     });
   });
 
-  function renderAIPanel(suggestion) {
+  function renderAIPanel(suggestion, pairings) {
     const aiPanelHTML = `
       <div class="flex flex-col items-center justify-center mt-4">
         <button
@@ -111,6 +115,8 @@
       </div>
     `;
 
+    const pairingHTML = `<h1 class="text-2xl font-bold">Important Pairs</h1><p>${formatResponse(pairings)}</p>`;
+
     function formatResponse(responseText) {
       let formattedText = responseText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
@@ -124,6 +130,8 @@
     }
 
     document.getElementById("ai-panel-placeholder").innerHTML = aiPanelHTML;
+
+    document.getElementById("imp-pairings-placeholder").innerHTML = pairingHTML;
 
     addChatMessage("AI", formatResponse(suggestion));
 

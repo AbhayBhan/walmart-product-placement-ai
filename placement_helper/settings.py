@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-!&gv!_$4zjxya02ra)2+7!&+$#-7(zd0%waj^3+ahrt!+^^+5r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["walmart-product-placement-ai.onrender.com"]
 
 
 # Application definition
