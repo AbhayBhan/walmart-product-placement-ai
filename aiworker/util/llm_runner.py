@@ -44,7 +44,7 @@ def give_imp_pairs() :
     }
   )
 
-  prompt_template = PromptTemplate.from_template("We have provided the CSV analyzed by sales using market basket analysis, It tells what items are most likely to be bought or picked upby the consumers, I want you to read this data and give me a list of pairs that are important and must be kept near. \n The Data is : \n {data}")
+  prompt_template = PromptTemplate.from_template("We have provided the CSV analyzed by sales using market basket analysis, It tells what items are most likely to be bought or picked upby the consumers, I want you to read this data and give me a list of pairs that are important and must be kept near. You just have to provide the Highest, moderate, lowest priority list without much explanation. \n The Data is : \n {data}")
 
   input_basket = get_basket_analysis()
   prompt = prompt_template.invoke({"data" : input_basket})
