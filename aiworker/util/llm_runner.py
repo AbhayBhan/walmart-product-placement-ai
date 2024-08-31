@@ -2,7 +2,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
 from ..models import BasketAnalysis
 
-API_KEY="<API_KEY_HERE>"
+API_KEY="<API KEY HERE>"
 
 # HELPER FUNCTION
 def get_basket_analysis():
